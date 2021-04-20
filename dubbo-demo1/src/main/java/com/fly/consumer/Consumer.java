@@ -17,6 +17,7 @@ public class Consumer {
 
         System.out.println("master 提交了代码");
         System.out.println("branch 提交了代码");
+        System.out.println("master 提交了代码");
 
     }
 }
