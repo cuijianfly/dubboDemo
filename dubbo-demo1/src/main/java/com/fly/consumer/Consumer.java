@@ -12,5 +12,6 @@ public class Consumer {
         String hello = demoService.helloDubbo("tom"); // 执行远程方法
         System.out.println( hello ); // 显示调用结果
         System.out.println("master 提交了代码");
+        //7888888
     }
 }
