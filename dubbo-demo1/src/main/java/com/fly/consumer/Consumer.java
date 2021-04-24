@@ -19,5 +19,15 @@ public class Consumer {
         System.out.println("branch 提交了代码");
         System.out.println("master 提交了代码");
 
+        System.out.println("branch2 提交了代码");
+        System.out.println("master 提交了代码");
+        
+        System.out.println("master git修改了代码");
+        
+        System.out.println("001");
+        System.out.println("002");
+        System.out.println("003");
+        System.out.println("004");
+
     }
 }
