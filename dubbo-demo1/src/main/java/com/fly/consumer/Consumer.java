@@ -26,6 +26,6 @@ public class Consumer {
         
         System.out.println("001");
         System.out.println("003");
-    }
+
     }
 }
