@@ -1,0 +1,206 @@
+Index: dubbo-demo1/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/pom.xml b/dubbo-demo1/pom.xml
+new file mode 100644
+--- /dev/null	(date 1618750196617)
++++ b/dubbo-demo1/pom.xml	(date 1618750196617)
+@@ -0,0 +1,51 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <parent>
++        <artifactId>dubboDemo</artifactId>
++        <groupId>com.fly</groupId>
++        <version>1.0-SNAPSHOT</version>
++    </parent>
++    <modelVersion>4.0.0</modelVersion>
++
++    <artifactId>dubbo-demo1</artifactId>
++
++    <dependencies>
++        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo -->
++        <dependency>
++            <groupId>org.apache.dubbo</groupId>
++            <artifactId>dubbo</artifactId>
++            <version>2.7.10</version>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.curator</groupId>
++            <artifactId>curator-framework</artifactId>
++            <version>4.0.1</version>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.curator</groupId>
++            <artifactId>curator-recipes</artifactId>
++            <version>4.0.1</version>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.zookeeper</groupId>
++            <artifactId>zookeeper</artifactId>
++            <version>3.6.3</version>
++        </dependency>
++        <dependency>
++            <groupId>org.apache.curator</groupId>
++            <artifactId>curator-x-discovery</artifactId>
++            <version>2.11.1</version>
++        </dependency>
++    </dependencies>
++
++    <properties>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
++    </properties>
++
++
++
++
++</project>
+\ No newline at end of file
+Index: dubbo-demo1/src/main/resources/dubbo-consumer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/resources/dubbo-consumer.xml b/dubbo-demo1/src/main/resources/dubbo-consumer.xml
+new file mode 100644
+--- /dev/null	(date 1618749567223)
++++ b/dubbo-demo1/src/main/resources/dubbo-consumer.xml	(date 1618749567223)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<beans xmlns="http://www.springframework.org/schema/beans"
++       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
++       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
++
++    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
++    <dubbo:application name="consumer"  />
++
++    <!-- 使用multicast广播注册中心暴露发现服务地址 -->
++    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
++
++    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
++    <dubbo:reference id="dubboService" interface="com.fly.api.DubboService" />
++</beans>
+Index: dubbo-demo1/src/main/java/com/fly/provider/ProviderStart.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/java/com/fly/provider/ProviderStart.java b/dubbo-demo1/src/main/java/com/fly/provider/ProviderStart.java
+new file mode 100644
+--- /dev/null	(date 1618744946232)
++++ b/dubbo-demo1/src/main/java/com/fly/provider/ProviderStart.java	(date 1618744946232)
+@@ -0,0 +1,20 @@
++package com.fly.provider;
++
++import org.springframework.context.support.ClassPathXmlApplicationContext;
++
++import java.io.IOException;
++
++public class ProviderStart {
++
++    public static void main(String[] args) {
++        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("dubbo-provider.xml");
++        context.start();
++
++        try {
++            System.in.read();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++
++    }
++}
+Index: dubbo-demo1/src/main/java/com/fly/api/DubboService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/java/com/fly/api/DubboService.java b/dubbo-demo1/src/main/java/com/fly/api/DubboService.java
+new file mode 100644
+--- /dev/null	(date 1618741854769)
++++ b/dubbo-demo1/src/main/java/com/fly/api/DubboService.java	(date 1618741854769)
+@@ -0,0 +1,6 @@
++package com.fly.api;
++
++public interface DubboService {
++
++    public String helloDubbo(String name);
++}
+Index: dubbo-demo1/src/main/java/com/fly/provider/DubboServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/java/com/fly/provider/DubboServiceImpl.java b/dubbo-demo1/src/main/java/com/fly/provider/DubboServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1618741854776)
++++ b/dubbo-demo1/src/main/java/com/fly/provider/DubboServiceImpl.java	(date 1618741854776)
+@@ -0,0 +1,10 @@
++package com.fly.provider;
++
++import com.fly.api.DubboService;
++
++public class DubboServiceImpl implements DubboService {
++    @Override
++    public String helloDubbo(String name) {
++        return "hello : " + name;
++    }
++}
+Index: dubbo-demo1/src/main/resources/dubbo-provider.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/resources/dubbo-provider.xml b/dubbo-demo1/src/main/resources/dubbo-provider.xml
+new file mode 100644
+--- /dev/null	(date 1618749334808)
++++ b/dubbo-demo1/src/main/resources/dubbo-provider.xml	(date 1618749334808)
+@@ -0,0 +1,11 @@
++<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
++       xmlns="http://www.springframework.org/schema/beans"
++       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
++       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
++    <dubbo:application name="provider"/>
++    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
++    <dubbo:protocol name="dubbo" port="20890"/>
++    <bean id="dubboService" class="com.fly.provider.DubboServiceImpl"/>
++    <dubbo:service interface="com.fly.api.DubboService" ref="dubboService"/>
++</beans>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(date 1618740710348)
++++ b/pom.xml	(date 1618740710348)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>com.fly</groupId>
++    <artifactId>dubboDemo</artifactId>
++    <packaging>pom</packaging>
++    <version>1.0-SNAPSHOT</version>
++    <modules>
++        <module>dubbo-demo1</module>
++    </modules>
++
++    <properties>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
++    </properties>
++
++</project>
+\ No newline at end of file
