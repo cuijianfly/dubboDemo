@@ -31,6 +31,7 @@ public class Consumer {
         System.out.println("004");
         System.out.println("005");
         System.out.println("006");
+        System.out.println("007");
 
     }
 }
