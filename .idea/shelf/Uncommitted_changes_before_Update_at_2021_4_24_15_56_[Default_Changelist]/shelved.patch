@@ -1,0 +1,17 @@
+Index: dubbo-demo1/src/main/java/com/fly/consumer/GitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.fly.consumer;\r\n\r\nimport com.fly.api.DubboService;\r\nimport org.springframework.context.support.ClassPathXmlApplicationContext;\r\n\r\npublic class Consumer {\r\n\r\n    public static void main(String[] args) {\r\n        System.out.println(\"123\");\r\n        System.out.println(\"1234\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dubbo-demo1/src/main/java/com/fly/consumer/GitTest.java b/dubbo-demo1/src/main/java/com/fly/consumer/GitTest.java
+--- a/dubbo-demo1/src/main/java/com/fly/consumer/GitTest.java	(revision 1bc98a97e2485c5beb708fccc320ca9fb7124880)
++++ b/dubbo-demo1/src/main/java/com/fly/consumer/GitTest.java	(date 1619250673166)
+@@ -8,5 +8,6 @@
+     public static void main(String[] args) {
+         System.out.println("123");
+         System.out.println("1234");
++        System.out.println("123456");
+     }
+ }
