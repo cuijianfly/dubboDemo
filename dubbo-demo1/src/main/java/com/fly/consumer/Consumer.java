@@ -25,6 +25,7 @@ public class Consumer {
         System.out.println("master git修改了代码");
         
         System.out.println("001");
+        System.out.println("003");
     }
     }
 }
