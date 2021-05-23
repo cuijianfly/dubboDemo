@@ -6,5 +6,8 @@ public class Test0523 {
 
         System.out.println(002);
         System.out.println(001-01);
+        System.out.println(002-01);
+        System.out.println(002-02);
+
     }
 }
